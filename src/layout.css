@@ -1,0 +1,131 @@
+body {
+    display: grid;
+    grid-template-rows: 32px auto;
+    grid-template-columns: 256px auto;
+
+    padding: 0px;
+    margin: 0px;
+    height: 100vh !important;
+}
+
+.titlebar {
+    grid-row: 1;
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+    display: grid;
+    grid-template-columns: 256px auto 112px 144px;
+    grid-template-rows: 32px;
+}
+.titlebar > .logo {
+    grid-column: 1;
+}
+.titlebar > .window-actions {
+    display: flex;
+    grid-column: 4;
+    
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.titlebar > .title {
+    grid-column: 2;
+}
+.titlebar > .window-actions > span {
+    height: 100%;
+    width: 100%;
+}
+
+.navigator {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column: 1;
+}
+.chat {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column: 2;
+
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: auto 256px;
+}
+
+.chat > .messages-flexer {
+    grid-row: 1 / span 2;
+    grid-column: 1;
+    /* finally, actually define the flexbox */
+    display: flex;
+    /* tell it to make a column (vertical) and not to wrap after running out of space */
+    flex-flow: column nowrap;
+    /* k good */
+}
+
+.chat > .messages-flexer > .messages {
+    /* grid-row: 1;
+    grid-column: 1;
+    height: 100%; */
+    flex: 1 /* try to use up all remaining space                                                                   */
+          0 /* don't shrink when something else grows (but we start at 0, so it doesn't matter)                    */
+          0 /* and start by taking up zero space (meaning all the space it gets is the space .chat-bar doesn't use */
+}
+.chat > .members {
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column: 2;
+}
+
+.chat > .messages-flexer > .chat-bar {
+    /* wouldn't the flexbox be a wrapper around chat-bar and messages? - ive never used flexbox before*/
+    /* it's like grid, but it only has one direction */
+    /* and, in addition or as an alternative to setting static sizes, you set a fraction of the remaining space to take up */
+
+    /* my brain hurts */
+    /* hold on, I have a dry erase marker somewhere                                                            */
+    /* ok I'm bad at explaining things                                                                         */
+    /* basically, you can make the chat bar first render its natural size                                      */
+    /* then use the rest of the space for the messages list                                                    */
+    /* a flexbox's job is to distribute its space to elements within, like a grid but different                */
+    /* but you'll need another wrapper to take up the grid space and divide it between .chat-bar and .messages */
+    /* (which is .messages-flexer's job)                                                                       */
+    /* then, you tell the chat bar to take up its normal size inside the flex box                              */
+    flex: 0    /* don't grow to take up extra space       */
+          0    /* and don't shrink if we run out of space */
+          auto /* and render at our height                */
+          ; /*ok, but
+          
+          
+          how do we make the textarea scale depending on the lines*/
+          /* idk; if it isn't CSS builtin it might require JS */
+          /* I can detect the textbox's text changing and set its height to 1em per line it has */
+
+    grid-row: 2;
+    grid-column: 1;
+    /* min-height: 48px; */
+
+    /* display: grid; /* you'd still make chat be a grid for its children to render in a grid shape */
+    /* grid-template-rows: 1fr;
+    grid-template-columns: 48px auto 48px; */
+
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: start;
+}
+.chat > .messages-flexer > .chat-bar > #chat-input {
+    flex: 1 0 0;
+    grid-column: 2;
+    grid-row: 1;
+    /* and disable manual resizing so users can't mess up the height */
+    height: 1em; /* we should leave a real comment so any future readers know that main.js changes this */ /* nah your comment rn already explained that */
+    resize: none;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+.chat > .messages-flexer > .chat-bar > #upload,
+.chat > .messages-flexer > .chat-bar > #emoji-picker {
+    flex: 0 0 48px;
+    height: 48px;
+}
+
+/* I wonder what the people eventually reading these comments will think */

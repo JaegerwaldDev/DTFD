@@ -1,0 +1,33 @@
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    do not change viewbox, unless you update the svg to match    
+    viewbox sets the coordinate scale inside the svg             
+    which will automatically be scaled to whatever you set in CSS help this is overwhelming and i dont like it
+    basically, it's just describing the picture, similar to HTML 
+    <defs>
+        this defines a mask, which cuts the plus shape from the circle
+        this is then used later when the circle is actually defined   
+        <mask id="plus">
+            first, fill the masking canvas with white                    
+            this will allow the element being masked to show through     
+            think of it like the opposite of Figura's emissives          
+            fully white will do nothing at all to the base texture       
+            while full black will make the base texture fully transparent
+            <rect width="24" height="24" fill="white" />
+            now I put both lines in a group so both of their properties can be changed at once
+            black will create transparency when the mask is applied                           
+            <g stroke="black" stroke-linecap="round" stroke-width="2">
+                <line x1="12" y1="4" x2="12" y2="20" />
+                <line x1="4" y1="12" x2="20" y2="12" />
+            </g>
+        </mask>
+    </defs>
+    apparently live share doesn't support viewing uploaded pngs uh oh
+    now I apply the mask, which will cut a plus into the circle      
+    and fill the circle with the color provided by CSS               
+    <circle cx="12" cy="12" r="12" fill="currentcolor" mask="url(#plus)" />
+    oh by the way plain text like this is perfectly valid svg and will be ignored
+
+    oh, then why are you commenting lol?
+    because I forgot
+    mood
+</svg>

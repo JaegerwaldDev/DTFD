@@ -1,0 +1,130 @@
+@import url("./layout.css");
+
+#fiveserver-info-wrapper:not(:target /* so it can be shown if viewer wants */) {
+    display: none !important;
+}
+
+:root {
+    /* we need a good color palette */
+    /* found material design; what's our primary color? */
+
+    /* ¯\_(ツ)_/¯ */ 
+
+    --dark-100: #000000;
+    --dark-200: #202020;
+    --dark-300: #404040;
+    --dark-400: #606060;
+    --dark-500: #808080;
+    --dark-600: #a0a0a0;
+    --dark-700: #c0c0c0;
+    --dark-800: #d0d0d0;
+    --dark-900: #000000;
+    
+    /* TODO: light theme styles */
+    --light-100: #000000;
+    --light-200: #000000;
+    --light-300: #000000;
+    --light-400: #000000;
+    --light-500: #000000;
+    --light-600: #000000;
+    --light-700: #000000;
+    --light-800: #000000;
+    --light-900: #000000;
+}
+
+* {
+    user-select: none;
+}
+
+html {
+    background-color: var(--dark-200);
+}
+
+.titlebar {
+    background-color: blue;
+}
+.navigator {
+    background-color: #802020;
+}
+.chat {
+    background-color: #208020;
+}
+.messages {
+    background-color: #804000;
+}
+.members {
+    background-color: #202080;
+}
+.chat-bar {
+    background-color: white;
+    color: black;
+}
+#chat-input {
+    border: 0 none;
+}
+
+/* wait wouldn't this expect style.css to be in assets? */
+.titlebar > .logo {
+    background-image: url("../assets/logo.svg");
+    background-size: 128px;
+    background-repeat: no-repeat;
+}
+.titlebar > .title {
+    background-color: red;
+}
+.titlebar > .window-actions > span {
+    background-repeat: no-repeat;
+    background-position-y: 10px;
+    background-position-x: 18px;
+    background-size: 12px;
+
+    transition-duration: 0.25s;
+}
+.titlebar > .window-actions > #minimize {
+    background-image: url("../assets/window_minimize.png");
+}
+.titlebar > .window-actions > #maximize {
+    background-image: url("../assets/window_maximize.png");
+}
+.titlebar > .window-actions > #close {
+    background-image: url("../assets/window_close.png");
+}
+.titlebar > .window-actions > span:hover {
+    background-color: #ffffff80;
+}
+.titlebar > .window-actions > span:active {
+    background-color: #00000040;
+}
+
+.chat > .messages-flexer > .chat-bar > #chat-input {
+    font: inherit;
+    line-height: 1em;
+    border: none;
+}
+
+.chat > .messages-flexer > .chat-bar > #upload,
+.chat > .messages-flexer > .chat-bar > #emoji-picker {
+    background-repeat: no-repeat;
+    background-position-x: 8px;
+    background-position-y: 8px;
+    background-size: 32px;
+    cursor: pointer;
+}
+.chat > .messages-flexer > .chat-bar > #upload {
+    background-image: url("../assets/chat_upload.png");
+}
+.chat > .messages-flexer > .chat-bar > #emoji-picker {
+    background-image: url("../assets/chat_emoji.png");
+}
+
+@media (prefers-color-scheme: light) { /* ew light mode */
+    html {
+        background-color: #fdfdfd;
+    }
+}
+
+@media (prefers-contrast: more) {
+    html {
+        background-color: #000000;
+    }
+}

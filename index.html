@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>DTFD</title>
+        <link rel="stylesheet" href="./src/style.css"></link>
+    </head>
+    <body>
+        <div class="titlebar">
+            <span class="logo"></span>
+            <span id="title" class="title">Chat lol</span>
+            <div class="window-actions">
+                <span id="minimize"></span>
+                <span id="maximize"></span>
+                <span id="close"></span>
+            </div>
+        </div>
+        <div class="navigator"></div>
+        <div class="chat">
+            <!-- another div for messages and chat-bar -->
+            <!-- this will act as the flexbox          -->
+            <div class="messages-flexer">
+                <div class="messages">a</div>
+                <div class="pending-uploads">
+                    <template id="pending-upload-card">
+                        <!-- templates hold HTML that won't exist when rendering    -->
+                        <!-- but are readable by JS. JS will, on file upload,       -->
+                        <!-- copy all the content from the template (including      -->
+                        <!-- these comment nodes!) and render them, replacing       -->
+                        <!-- placeholders with actual information. I'll use the     -->
+                        <!-- <slot> element for this, since that's pretty much      -->
+                        <!-- it's designed for.                                     -->
+                        <!-- A node generated from this template will be a          -->
+                        <!-- <instance from="pending-upload-card">, so the CSS      -->
+                        <!-- query instance[from=pending-upload card] can be used   -->
+                        <!-- to select and style it.                                -->
+                        <!-- Also, slots will be *completely replaced* on           -->
+                        <!-- instantiation, so using slot[name=filename] will match -->
+                        <!-- no elements at all.                                    -->
+                        <slot name="filename">example.txt</slot>
+                    </template>
+                </div>
+                <div class="chat-bar">
+                    <span id="upload"></span>
+                    <textarea id="chat-input"></textarea>
+                    <span id="emoji-picker"></span>
+                </div>
+            </div>
+            <div class="members"></div>
+        </div>
+        <script src="./src/main.js" type="module"></script>
+    </body>
+</html>
