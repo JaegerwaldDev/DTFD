@@ -1,7 +1,8 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
     do not change viewbox, unless you update the svg to match    
     viewbox sets the coordinate scale inside the svg             
-    which will automatically be scaled to whatever you set in CSS help this is overwhelming and i dont like it
+    which will automatically be scaled to whatever you set in CSS
+    help this is overwhelming and i dont like it
     basically, it's just describing the picture, similar to HTML 
     <defs>
         this defines a mask, which cuts the plus shape from the circle

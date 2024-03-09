@@ -128,4 +128,8 @@ body {
     height: 48px;
 }
 
+.chat > .messages-flexer > .pending-uploads > * {
+    height: 64px;
+}
+
 /* I wonder what the people eventually reading these comments will think */

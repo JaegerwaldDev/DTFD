@@ -61,7 +61,7 @@ function instantiate(name, data = {}) {
     for (let slot of instance.querySelectorAll("slot")) {
         if (slot.name in data) {
             // @ts-ignore - Typescript doesn't know that flattening removes arrays
-            slot.replaceWith(...[data[sl]].flat(Infinity))
+            slot.replaceWith(...[data[slot.name]].flat(Infinity))
         } else {
             slot.replaceWith(...slot.childNodes)
         }
@@ -70,4 +70,5 @@ function instantiate(name, data = {}) {
 }
 
 // testing code
-document.querySelector(".pending-uploads").append(instantiate("pending-upload-card"))
+for (let n = 0; n < 10; n++)
+document.querySelector(".pending-uploads").append(instantiate("pending-upload-card", { filename: `file${n+1}.txt` }))
