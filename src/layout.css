@@ -6,6 +6,7 @@ body {
     padding: 0px;
     margin: 0px;
     height: 100vh !important;
+    max-width: 100vw;
 }
 
 .titlebar {
@@ -128,8 +129,16 @@ body {
     height: 48px;
 }
 
-.chat > .messages-flexer > .pending-uploads > * {
+.chat > .messages-flexer > .pending-uploads > instance[from=pending-upload-card] {
+    display: inline-block;
+    background-color: brown;
     height: 64px;
+    width: 256px;
+}
+.chat > .messages-flexer > .pending-uploads {
+    display: flex;
+    gap: 8px;
+    padding: 8px;
 }
 
 /* I wonder what the people eventually reading these comments will think */
